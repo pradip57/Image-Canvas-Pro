@@ -4,12 +4,16 @@ const upload = document.getElementById('upload');
 const bgColor = document.getElementById('bg-color');
 const imgWidthInput = document.getElementById('img-width');
 const imgHeightInput = document.getElementById('img-height');
+const imgXInput = document.getElementById('img-x');
+const imgYInput = document.getElementById('img-y');
 const canvasWidthInput = document.getElementById('canvas-width');
 const canvasHeightInput = document.getElementById('canvas-height');
 const downloadBtn = document.getElementById('download');
 let img = new Image();
 let imgWidth = 400;
 let imgHeight = 400;
+let imgX = 200;
+let imgY = 200;
 
 // Set initial canvas dimensions
 canvas.width = 800;
@@ -25,13 +29,9 @@ function updateCanvas() {
     ctx.fillStyle = bgColor.value;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Center the image on the canvas
-    const x = (canvas.width - imgWidth) / 2;
-    const y = (canvas.height - imgHeight) / 2;
-
     // Draw the uploaded image
     if (img.src) {
-        ctx.drawImage(img, x, y, imgWidth, imgHeight);
+        ctx.drawImage(img, imgX, imgY, imgWidth, imgHeight);
     }
 }
 
@@ -49,7 +49,7 @@ upload.addEventListener('change', function(event) {
 // Handle background color change
 bgColor.addEventListener('input', updateCanvas);
 
-// Handle image resizing with text inputs
+// Handle image resizing and positioning with text inputs
 imgWidthInput.addEventListener('input', function() {
     imgWidth = parseInt(this.value);
     updateCanvas();
@@ -57,6 +57,16 @@ imgWidthInput.addEventListener('input', function() {
 
 imgHeightInput.addEventListener('input', function() {
     imgHeight = parseInt(this.value);
+    updateCanvas();
+});
+
+imgXInput.addEventListener('input', function() {
+    imgX = parseInt(this.value);
+    updateCanvas();
+});
+
+imgYInput.addEventListener('input', function() {
+    imgY = parseInt(this.value);
     updateCanvas();
 });
 
