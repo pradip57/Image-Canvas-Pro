@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+.canvas-container {
+    position: relative;
+    display: inline-block;
+    border: 2px solid none;
+    background-color: white;
+    margin-bottom: 20px;
+    
+}
+
+#canvas {
+    display: block;
+    max-width: 100%;
+}
+
+.controls input {
+    margin: 5px;
+}
